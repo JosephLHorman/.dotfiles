@@ -2,7 +2,12 @@ require("digichip.remap")
 require("digichip.set")
 
 vim.g.vimwiki_list = {{
-    path = '~/vimwiki',
+    path = '/mnt/z/vimwiki',
+    syntax = 'markdown',
+    ext ='.md',
+    auto_diary_index = 1,
+}, {
+    path = '/mnt/z/Projects/Active/The Wandering Chronicles Staging Area/vimwiki',
     syntax = 'markdown',
     ext ='.md',
     auto_diary_index = 1,
