@@ -1,3 +1,7 @@
+# General options
+unsetopt beep
+setopt extended_glob # Also needed by by compinit check below
+
 # History
 HISTSIZE=10000
 HISTFILE=~/.histfile
@@ -9,26 +13,17 @@ setopt hist_ignore_all_dups # Subsumes hist_ignore_dups and hist_save_no_dups
 setopt hist_find_no_dups
 setopt inc_append_history
 
-# Stuff added by zsh-newuser-install
-unsetopt beep
-
 # Vim mode
 bindkey -v
 export KEYTIMEOUT=1 # remove default Esc delay
+bindkey -v '^?' backward-delete-char # allow backspace past insert-mode entry point
 
-# Cutsom additions
-## Path Changes
-export PATH="$PATH:$HOME/.local/bin" # To add Claude to path
-
-## Env Variables:
-export EDITOR="nvim"
-
+# Custom additions
 ## Aliases
 alias ls="ls --color"
 
 ## Shell Integrations
 eval "$(starship init zsh)"
-PATH="${PATH:+${PATH}:}/home/digichip/.fzf/bin"
 # Source fzf's static shell scripts directly instead of `fzf --zsh`, which forks fzf every startup
 [[ -f ~/.fzf/shell/completion.zsh ]] && source ~/.fzf/shell/completion.zsh
 [[ -f ~/.fzf/shell/key-bindings.zsh ]] && source ~/.fzf/shell/key-bindings.zsh
@@ -43,8 +38,6 @@ zinit light zsh-users/zsh-completions # Load before compinit
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 autoload -Uz compinit
 # Only run the full (slow) compinit security/rebuild scan if the dump is >24h old; otherwise trust the cached dump.
-# (#q...) qualifiers inside [[ ]] require extended_glob, hence the setopt.
-setopt extended_glob
 if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
   compinit
 else
@@ -53,8 +46,10 @@ fi
 zinit cdreplay -q # See zinit README- tldr: performance gains
 zinit light Aloxaf/fzf-tab # Load after compinit but before autosuggestions
 zstyle ':completion:*' menu no
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compcache"
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case-insensitive completion matching
 
 zinit ice wait lucid
 zinit light zsh-users/zsh-autosuggestions
