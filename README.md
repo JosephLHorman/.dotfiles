@@ -12,6 +12,8 @@
   - (Perhaps whatever keybind ends up being used for a similar function in nvim for autocompletions)
 - [ ] Implement fnm for Node
 - [ ] Implment uv for Python
+- [ ] As a part of install script, update tmux.conf's clipboard program to match environment
+  - (xclip -selection clipboard -in / pbcopy) - likely for linux
 
 ## What is this?
 I got really bad about stale config management. Now this is my source of truth for configs. Use at your own risk.
@@ -38,16 +40,20 @@ This repository currently assumes the usage of GNU Stow and cloning this repo di
   - zsh
   - git (may be required beforehand anyway to download repo and run bootstrap script)
   - stow
+  - tmux
 
 - Special installations:
   - fzf
     - Since apt is far behind on fzf, instead use the git installation into `~/.fzf`, and update using `cd ~/.fzf && git pull && ./install`
   - nvim
     - Assumes the /opt/ binary installation of nvim. If installed otherwise, edit the path for nvim set in zsh/.zshenv
+  - TPM
+    - git clone
 
 - Scripts to run after
   - Change shell: `chsh -s $(which zsh)`
   - starship installation script (curl based)
+  - In Tmux be sure to run <prefix>I
 
 ## Keybindings to remember:
 ### ZSH + FZF:
