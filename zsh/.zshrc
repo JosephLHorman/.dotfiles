@@ -1,6 +1,7 @@
 # General options
 unsetopt beep
 setopt extended_glob # Also needed by by compinit check below
+setopt globdots # Include dotfiles in globbing/tab completion without a leading dot
 
 # History
 HISTSIZE=10000
