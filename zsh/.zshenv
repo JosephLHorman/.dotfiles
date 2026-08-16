@@ -5,6 +5,7 @@
 typeset -U path # dedupe PATH entries as more get appended
 export PATH="$PATH:$HOME/.local/bin" # To add Claude to path
 PATH="${PATH:+${PATH}:}/home/digichip/.fzf/bin"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 ## Env Variables
 export EDITOR="nvim"

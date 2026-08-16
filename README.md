@@ -43,6 +43,7 @@ This repository currently assumes the usage of GNU Stow and cloning this repo di
   - fzf
     - Since apt is far behind on fzf, instead use the git installation into `~/.fzf`, and update using `cd ~/.fzf && git pull && ./install`
   - nvim
+    - Assumes the /opt/ binary installation of nvim. If installed otherwise, edit the path for nvim set in zsh/.zshenv
 
 - Scripts to run after
   - Change shell: `chsh -s $(which zsh)`
