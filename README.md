@@ -16,6 +16,10 @@
   - (xclip -selection clipboard -in / pbcopy) - likely for linux
 - [ ] Add python module to starship
 - [ ] I'll probably get tired of starship using the bright carbonfox colors. Consider either using dim, going monochrome, using monochrome bg w/ colored fg, or moving away from powerlevel style prompt
+- [ ] Install script needs to create nvim's undodir (/undodur) under: print(vim.fn.stdpath("data"))
+- [ ] Learn about nvim ui2 and consider adding to config
+- [ ] Depending on LSP settup, consider adding telescope pickers to use isntead of default diag options
+- [ ] Add rust to starship
 
 ## What is this?
 I got really bad about stale config management. Now this is my source of truth for configs. Use at your own risk.
@@ -43,6 +47,17 @@ This repository currently assumes the usage of GNU Stow and cloning this repo di
   - git (may be required beforehand anyway to download repo and run bootstrap script)
   - stow
   - tmux
+  - luarocks (requires build-essential libreadline-dev unzip)
+  - ripgrep (nvim and telescope)
+  - fd (telescope)
+  - treesitter:
+    - tar
+    - curl
+    - tree-sitter-cli
+      - requires node on PATH
+      - requires C/C++ compiler
+      - best install method requires `cargo/cargo binstall`
+        - Requires Rust
 
 - Special installations:
   - fzf
