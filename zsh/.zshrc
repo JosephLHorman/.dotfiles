@@ -25,6 +25,12 @@ alias ls="ls --color"
 
 ## Shell Integrations
 eval "$(starship init zsh)"
+# fnm
+FNM_PATH="/home/digichip/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
 # Source fzf's static shell scripts directly instead of `fzf --zsh`, which forks fzf every startup
 [[ -f ~/.fzf/shell/completion.zsh ]] && source ~/.fzf/shell/completion.zsh
 [[ -f ~/.fzf/shell/key-bindings.zsh ]] && source ~/.fzf/shell/key-bindings.zsh
