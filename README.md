@@ -14,6 +14,8 @@
 - [ ] Implment uv for Python
 - [ ] As a part of install script, update tmux.conf's clipboard program to match environment
   - (xclip -selection clipboard -in / pbcopy) - likely for linux
+- [ ] Add python module to starship
+- [ ] I'll probably get tired of starship using the bright carbonfox colors. Consider either using dim, going monochrome, using monochrome bg w/ colored fg, or moving away from powerlevel style prompt
 
 ## What is this?
 I got really bad about stale config management. Now this is my source of truth for configs. Use at your own risk.
