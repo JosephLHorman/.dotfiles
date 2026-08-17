@@ -37,7 +37,7 @@ opt.smartcase = true -- Override ignorecase if caps are used
 -- Disable Proviers
 -- (Unneeded healtcheck warnings)
 vim.g.loaded_perl_provider = 0
-vim.g.loaded_ruby_provider= 0
+vim.g.loaded_ruby_provider = 0
 
 -- Misc
 opt.updatetime = 100 -- Faster completion

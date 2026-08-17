@@ -18,7 +18,7 @@ keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- Move lines while they are highlighte
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 keymap.set("x", "p", [["_dP]], { desc = "Paste over your selection without losing yanked text. Overrides default behavior" })
 keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- Find & Replace word I'm on
-keymap.set("n", "<CR>", "<cmd>noh<CR><CR>") -- " This unsets the last search pattern register by hitting return
+keymap.set("n", "<CR>", "<cmd>noh<CR><CR>") -- This unsets the last search pattern register by hitting return
 keymap.set("v", "<", "<gv", { desc = "Unindent while keeping selection. Overrides default behavior" })
 keymap.set("v", ">", ">gv", { desc = "Indent while keeping selection. Overrides default behavior" })
 -- Native undotree
