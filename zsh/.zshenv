@@ -3,10 +3,12 @@
 
 ## PATH
 typeset -U path # dedupe PATH entries as more get appended
-export PATH="$PATH:$HOME/.local/bin" # To add Claude to path
-PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-export PATH="$PATH:$HOME/.cargo/bin"
+# Prepended (not appended) so these win over the Windows PATH that WSL
+# imports ahead of .zshenv running (e.g. pyenv-win shims shadowing uv pythons).
+export PATH="$HOME/.local/bin:$PATH" # To add Claude to path
+PATH="$HOME/.fzf/bin:$PATH"
+export PATH="/opt/nvim-linux-x86_64/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 ## Env Variables
 export EDITOR="nvim"
