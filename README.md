@@ -4,22 +4,28 @@
 - `stow --no-folding <package name>`
 
 ## TODO:
-- [ ] Upate starship colors to match carbonfox theme
-- [ ] Rebuild NVIM config from scratch
-- [ ] Rebuild TMUX config from scratch
 - [ ] Build and test bootstrap/installation script
 - [ ] Consier adding an appropriate/better keybinding for accepting zsh-autosuggest reccomendations
   - (Perhaps whatever keybind ends up being used for a similar function in nvim for autocompletions)
-- [ ] Implement fnm for Node
-- [ ] Implment uv for Python
 - [ ] As a part of install script, update tmux.conf's clipboard program to match environment
   - (xclip -selection clipboard -in / pbcopy) - likely for linux
-- [ ] Add python module to starship
 - [ ] I'll probably get tired of starship using the bright carbonfox colors. Consider either using dim, going monochrome, using monochrome bg w/ colored fg, or moving away from powerlevel style prompt
 - [ ] Install script needs to create nvim's undodir (/undodur) under: print(vim.fn.stdpath("data"))
 - [ ] Learn about nvim ui2 and consider adding to config
-- [ ] Depending on LSP settup, consider adding telescope pickers to use isntead of default diag options
+- [ ] After all plugins are setup, double check preference on lsp diag boxes using telescope or other
 - [ ] Add rust to starship
+- [ ] Add python module to starship
+- [ ] Add oil.nvim or similar
+- [ ] Add gitsigns.nvim or similar
+- [ ] Consider snacks.nvim or mini.nvim
+- [ ] Consider codecompanion or similar
+- [ ] See about adding config file for windows terminal to add the carbonfox theme, or maybe a script to pull it from the existing file that nightfox.nvim will download
+- [ ] Since window flags are disabled, add alternatives that are optionally visible when window is
+    - [ ] zoomed
+    - [ ] marked (if useful)
+    - [ ] Bell/notification
+    - [ ] Activity? (if useful)
+    - [ ] Silent for X (if useful)
 
 ## What is this?
 I got really bad about stale config management. Now this is my source of truth for configs. Use at your own risk.
