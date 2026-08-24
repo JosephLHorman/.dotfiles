@@ -16,8 +16,12 @@
     - [ ] Check all plugins are working as expected (especially mini, lsp stuff and snacks)
 - [ ] See about adding config file for windows terminal to add the carbonfox theme, or maybe a script to pull it from the existing file that nightfox.nvim will download
 - [ ] Get keybindings for all installed plugins and config changes
+- [ ] Research options for managing Windows with this source of truth
+    - [ ] Starship Configuration for Powershell
+    - [ ] Carbonfox theme colors for Windows Terminal
 
 ### Bootstrap/Installation Script
+- [ ] See [bootstrap notes](BootstrapNotes.md) for all that will need to be included in this process.
 - [ ] Build and test bootstrap/installation script
 - [ ] As a part of install script, update tmux.conf's clipboard program to match environment
   - (xclip -selection clipboard -in / pbcopy) - likely for linux
@@ -41,55 +45,6 @@ This repository currently assumes the usage of GNU Stow and cloning this repo di
   - https://www.youtube.com/watch?v=CFzEuBGPPPg
 ### Zsh configuration:
   - https://www.youtube.com/watch?v=ud7YxC33Z3w 
-
-
-## SETUP: DELTE ME
-- Packages to install:
-  - zsh
-  - git (may be required beforehand anyway to download repo and run bootstrap script)
-  - stow
-  - tmux
-  - unzip (for fnm)
-  - luarocks (requires build-essential libreadline-dev unzip)
-  - ripgrep (nvim and telescope)
-  - fd (telescope)
-    - Cargo installation
-  - Node.js (npm)
-    - required for tree-sitter-cli (see below)
-    - required by mason.nvim to install most LSP servers (bashls, cssls, html, ts_ls, jsonls, basedpyright) - only lua_ls skips this via a prebuilt binary
-  - treesitter:
-    - tar
-    - curl
-    - tree-sitter-cli
-      - requires node on PATH
-      - requires C/C++ compiler
-      - best install method requires `cargo/cargo binstall`
-        - Requires Rust
-        - also used by blink.cmp (nvim completion) as a fallback build path when no prebuilt binary is available for the platform
-  - snacks.nvim
-    - lazygit
-      - go (special installation)
-
-- Special installations:
-  - fzf
-    - Since apt is far behind on fzf, instead use the git installation into `~/.fzf`, and update using `cd ~/.fzf && git pull && ./install`
-  - nvim
-    - Assumes the /opt/ binary installation of nvim. If installed otherwise, edit the path for nvim set in zsh/.zshenv
-  - TPM
-    - git clone
-  - fnm
-    - curl'd script
-  - uv
-    - curl'd script
-    - needs installation of version and --default version set
-  - go
-    - curl tarbal, add to path
-    - use `go env -w GOPATH=$HOME/.local/share/go` or similar to change workspace and don't forget to move the ~/go directory
-
-- Scripts to run after
-  - Change shell: `chsh -s $(which zsh)`
-  - starship installation script (curl based)
-  - In Tmux be sure to run <prefix>I
 
 ## Keybindings to remember:
 ### ZSH + FZF:
