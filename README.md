@@ -7,13 +7,11 @@
 ### Configuration Files
 - [ ] Consier adding an appropriate/better keybinding for accepting zsh-autosuggest reccomendations
   - (Perhaps whatever keybind ends up being used for a similar function in nvim for autocompletions)
-- [ ] Learn about nvim ui2 and consider adding to config
 - [ ] Nvim:
-    - [ ] Add oil.nvim or similar
-    - [ ] Add gitsigns.nvim or similar
     - [ ] Consider codecompanion or similar
-    - [ ] consider snack's picker
-    - [ ] snacks.nvim setup a dashboard
+    - [ ] Consider snack's picker
+    - [ ] Snacks.nvim setup a dashboard
+    - [ ] Learn about nvim ui2 and consider adding to config
     - [ ] After all plugins are setup, double check preference on lsp diag boxes using telescope or other
     - [ ] Check all plugins are working as expected (especially mini, lsp stuff and snacks)
 - [ ] See about adding config file for windows terminal to add the carbonfox theme, or maybe a script to pull it from the existing file that nightfox.nvim will download
@@ -23,6 +21,7 @@
     - [ ] Bell/notification
     - [ ] Activity? (if useful)
     - [ ] Silent for X (if useful)
+- [ ] For Tmux, it doesn't feel like the current color pallet matches carbonfox. Consider customizing
 - [ ] Get keybindings for all installed plugins and config changes
 
 ### Bootstrap/Installation Script
@@ -135,6 +134,9 @@ This repository currently assumes the usage of GNU Stow and cloning this repo di
 #### mini.comment
   - gc- toggle comment, normal and visual
   - gcc- toggle comment on curent line
+#### mini.diff
+  - Bound `<leader>go` to show detailed diff 'overlay'
+  - Has decent hunk control, need to research usage better and consider if they should remain bound.
 #### mini.surround
   - sa - surround add
   - sd - surround delete

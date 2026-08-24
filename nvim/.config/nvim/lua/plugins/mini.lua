@@ -32,8 +32,16 @@ return {
       }
       })
       require("mini.comment").setup({})
+      require("mini.diff").setup({})
       require("mini.pairs").setup({})
       require("mini.surround").setup({})
     end,
+    keys = {
+      {
+        "<leader>go",
+        function() require("mini.diff").toggle_overlay() end,
+        desc = "Toggle diff overlay",
+      },
+    },
   },
 }
