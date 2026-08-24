@@ -15,13 +15,6 @@
     - [ ] After all plugins are setup, double check preference on lsp diag boxes using telescope or other
     - [ ] Check all plugins are working as expected (especially mini, lsp stuff and snacks)
 - [ ] See about adding config file for windows terminal to add the carbonfox theme, or maybe a script to pull it from the existing file that nightfox.nvim will download
-- [ ] For Tmux, since window flags are disabled, add alternatives that are optionally visible when window is
-    - [ ] zoomed
-    - [ ] marked (if useful)
-    - [ ] Bell/notification
-    - [ ] Activity? (if useful)
-    - [ ] Silent for X (if useful)
-- [ ] For Tmux, it doesn't feel like the current color pallet matches carbonfox. Consider customizing
 - [ ] Get keybindings for all installed plugins and config changes
 
 ### Bootstrap/Installation Script
