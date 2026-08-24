@@ -12,18 +12,19 @@ $directory\
 $git_branch\
 $git_status\
 [](bg:env_bg fg:git_bg)\
-$nodejs\
-$rust\
 $golang\
+$nodejs\
 $php\
+$python\
+$rust\
 [](fg:env_bg bg:user_bg)\
 $username\
+$character\
 [](fg:user_bg) """
 
 right_format = """
-$character
 [](fg:right_bg)\
-[$cmd_duration ](bg:right_bg)\
+$cmd_duration\
 $time\
 [▓▒░](fg:right_bg)\
 """
@@ -39,7 +40,7 @@ cyan = "#33b1ff"
 white = "#dfdfe0"
 orange = "#3ddbd9" # 'orange' (cyan/teal)
 pink = "#ff7eb6"
-#--- 
+#---
 os_bg = "#ee5396" # carbonfox red base
 dir_bg = "#be95ff" # carbonfox magenta base
 git_bg = "#33b1ff" # carbonfox cyan base
@@ -47,8 +48,8 @@ env_bg = "#3ddbd9" # carbonfox 'orange' base
 user_bg = "#08bdba" # carbonfox 'yellow' base
 right_bg = "#353535" # carbonfox bg3
 
-os_fg = "#282828" 
-dir_fg = "#282828" 
+os_fg = "#282828"
+dir_fg = "#282828"
 git_fg = "#282828"
 env_fg = "#282828"
 user_fg = "#282828"
@@ -57,16 +58,18 @@ right_fg = "#f2f4f8" # carbonfox fg1
 #right_fg = "#7b7c7e" # carbonfox fg3
 
 [character]
-success_symbol = ""
-error_symbol = '[](bold red)'
-vimcmd_symbol = '[](bold fg:green)'
-vimcmd_replace_one_symbol = '[](bold fg:purple)'
-vimcmd_replace_symbol = '[](bold fg:purple)'
-vimcmd_visual_symbol = '[](bold fg:yellow)'
+format = "$symbol"
+success_symbol = ''
+error_symbol = '[  ](fg:user_fg bg:user_bg)' # No $character level `style` option
+vimcmd_symbol = '[  ](fg:user_fg bg:user_bg)'
+vimcmd_replace_one_symbol = '[](fg:user_fg bg:user_bg)'
+vimcmd_replace_symbol = '[](fg:user_fg bg:user_bg)'
+vimcmd_visual_symbol = '[](fg:user_fg bg:user_bg)'
 
 [cmd_duration]
 min_time = 1500
-format = " $duration"
+style = "bg:right_bg fg:right_fg"
+format = '[ $duration]($style)'
 
 [directory]
 style = "fg:dir_fg bg:dir_bg"
@@ -82,32 +85,39 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:git_bg"
-format = '[[ $symbol $branch ](fg:git_fg bg:git_bg)]($style)'
+style = "bg:git_bg fg:git_fg"
+format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:git_bg"
-format = '[[($all_status$ahead_behind )](fg:git_fg bg:git_bg)]($style)'
+style = "bg:git_bg fg:git_fg"
+format = '[($all_status$ahead_behind )]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:env_bg"
-format = '[[ $symbol ($version) ](fg:env_fg bg:env_bg)]($style)'
+style = "bg:env_bg fg:env_fg"
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+symbol = "󰌠"
+# Warning: `uv` can run any binary at `.venv/bin/python` without interaction
+python_binary = [['uv', 'run', '--no-python-downloads', '--no-project', 'python']]
+style = "bg:env_bg fg:env_fg"
+format = '[ ${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
 [rust]
 symbol = ""
-style = "bg:env_bg"
-format = '[[ $symbol ($version) ](fg:env_fg bg:env_bg)]($style)'
+style = "bg:env_bg fg:env_fg"
+format = '[ $symbol ($version) ]($style)'
 
 [golang]
 symbol = ""
-style = "bg:env_bg"
-format = '[[ $symbol ($version) ](fg:env_fg bg:env_bg)]($style)'
+style = "bg:env_bg fg:env_fg"
+format = '[ $symbol ($version) ]($style)'
 
 [php]
 symbol = ""
-style = "bg:env_bg"
-format = '[[ $symbol ($version) ](fg:env_fg bg:env_bg)]($style)'
+style = "bg:env_bg fg:env_fg"
+format = '[ $symbol ($version) ]($style)'
 
 [os]
 style = "bg:os_bg fg:os_fg"
@@ -141,8 +151,8 @@ Pop = ""
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:right_bg"
-format = '[[$time](fg:right_fg bg:right_bg)]($style)'
+style = "bg:right_bg fg:right_fg"
+format = '[ $time]($style)'
 
 [username]
 disabled = false
