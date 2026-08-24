@@ -15,6 +15,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "<leader>D", require("telescope.builtin").diagnostics, "LSP: Diagnostics (telescope)")
     map("n", "[d", vim.diagnostic.goto_prev, "Diagnostic: Previous")
     map("n", "]d", vim.diagnostic.goto_next, "Diagnostic: Next")
-    map("n", "<leader>e", vim.diagnostic.open_float, "Diagnostic: Show line diagnostics")
+    map("n", "<leader>d", vim.diagnostic.open_float, "Diagnostic: Show line diagnostics")
   end,
 })
