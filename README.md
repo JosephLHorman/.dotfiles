@@ -39,55 +39,12 @@ This repository currently assumes the usage of GNU Stow and cloning this repo di
 - use `stow --no-folding <package name>`
   - `--no-folding` can save your butt! Without it, stow will symlink entire directories, which will cause changes to this repo if the application stores caches or other changes inside of its .config/ directory. Using this flag forces real directories to exist and only links files.
 
+## Other
+- [ ] See [keybindins cheatsheet](Cheatsheet.md)
+
 ## Tutorials for when I forget how this works:
 ### Overall concepts:
   - https://www.youtube.com/watch?v=NoFiYOqnC4o
   - https://www.youtube.com/watch?v=CFzEuBGPPPg
 ### Zsh configuration:
   - https://www.youtube.com/watch?v=ud7YxC33Z3w 
-
-## Keybindings to remember:
-### ZSH + FZF:
-  - Alt+C: Quick CD
-  - CTRL+R: Interactive history search (vi mode disables- fzf brings back)
-  - CTRL+T: Interactive file finder
-### Nvim
-#### snacks.explorer
-  - Select files with `<Tab>`. `m` to move or `c` to copy files in select mode. Can also `y`ank files in select or visual mode, and `p`aste into target directory
-  - `m` on single file to rename
-  - `c` on single file to copy w/ rename
-  - `r` rename
-  - `d` delete (single or selected)
-  - `a`dd new files (dir if ending in `/`)
-  - `o`pen with system application
-  - `u`pdate filetree
-  - `/`search `<leader>/` grep search in dir
-  - toggle `H`idden files
-  - toggle `I`gnored files
-  - toggle `P`review
-#### snacks.lazygit
-  - `<leader>gg` Open @ root dir
-  - `<leader>gl` Open log
-### snacks.notifier
-  - `<leader>nh` View notification history
-#### mini.ai
-  - Combine with existing `daw/ci"` nvim logic, with the following additions
-  - Reminder: `d` delete, `c` change, `y` yank, `v` visual select
-  - Can select all bracket-likes (`()[]{}<>`), `f`unction, `a`rgument, `t`ag (eg `<div>`), any `q`uote, any `b`racket, or `?`custom
-    - With treesitter, `f`unction becomes aware, `c`lass/scope, `a`rgument becomes aware
-  - Supports next/last modifiers, eg `an/in` for next occurance or `al/il` for last (previous) occurance
-  - Can count out, eg `2dab` delete around 2nd outward enclosing brackets
-#### mini.clue
-  - `<C-d>`/`<C-u>` to scroll pop-up
-#### mini.comment
-  - gc- toggle comment, normal and visual
-  - gcc- toggle comment on curent line
-#### mini.diff
-  - Bound `<leader>go` to show detailed diff 'overlay'
-  - Has decent hunk control, need to research usage better and consider if they should remain bound.
-#### mini.surround
-  - sa - surround add
-  - sd - surround delete
-  - sr - surround replace
-  - sf/sF - surround find
-  - sh - surround highlight
