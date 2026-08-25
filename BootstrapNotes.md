@@ -1,6 +1,7 @@
-## SETUP: DELTE ME
+# Bootstrap Notes
+
 > [!WARNING]
-> This file is an unrefined stream of conciousness that should not be read by mortal eyes
+> Document is WIP — an unrefined dependency dump for a bootstrap script that doesn't exist yet.
 
 - Packages to install:
   - zsh

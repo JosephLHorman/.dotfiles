@@ -1,4 +1,4 @@
--- TODO: Update all keymaps to use `desc` instead of a commend
+-- TODO: Update all keymaps to use `desc` instead of a comment
 local keymap = vim.keymap
 vim.g.mapleader = ' '
 

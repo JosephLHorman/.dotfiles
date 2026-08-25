@@ -29,13 +29,13 @@ opt.expandtab = true
 opt.smartindent = true
 
 -- Searching
-opt.hlsearch = true -- Highlight all serach matches
+opt.hlsearch = true -- Highlight all search matches
 opt.incsearch = true -- Show as you type
 opt.ignorecase = true
 opt.smartcase = true -- Override ignorecase if caps are used
 
 -- Disable Proviers
--- (Unneeded healtcheck warnings)
+-- (Unneeded healthcheck warnings)
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 

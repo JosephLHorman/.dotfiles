@@ -26,7 +26,7 @@ alias ls="ls --color"
 ## Shell Integrations
 eval "$(starship init zsh)"
 # fnm
-FNM_PATH="/home/digichip/.local/share/fnm"
+FNM_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "$(fnm env --shell zsh)"
