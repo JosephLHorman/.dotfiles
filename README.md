@@ -64,6 +64,8 @@ See the [keybindings cheatsheet](Cheatsheet.md) for the day-to-day bindings acro
 - [ ] Research options for managing Windows with this source of truth
     - [ ] Starship Configuration for Powershell
     - [ ] Carbonfox theme colors for Windows Terminal
+- [ ] Ideas to explore:
+    - [ ] For TMUX config, when SSHed, have window title changed to hostname of ssh target
 
 ### Bootstrap/Installation Script
 - [ ] See [bootstrap notes](BootstrapNotes.md) for all that will need to be included in this process.
