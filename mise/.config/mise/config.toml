@@ -25,4 +25,5 @@ lazygit     = "latest"   # snacks.lazygit
 tree-sitter = "0.25.10" # nvim-treesitter main branch needs the CLI to build parsers
 starship    = "latest"   # prompt; .zshrc evals this unconditionally
 shellcheck  = "latest"   # lints the provisioning scripts
+node        = "lts"      # At a global level, needed by Mason
 uv          = "latest"   # python project management
