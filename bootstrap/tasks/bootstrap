@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+#MISE description="First-run setup that the declarative phases cannot express"
+#
+# mise runs this as phase 17, after packages, repos, dotfiles and tools are all
+# in place. Everything here is imperative by nature: plugin managers that fetch
+# over the network, and binaries that have to be compiled locally.
+set -euo pipefail
+
+DOTFILES_ROOT=${MISE_PROJECT_ROOT:-$(cd -- "${BASH_SOURCE[0]%/*}/../.." && pwd)}
+# shellcheck source=../lib/log.sh
+source "$DOTFILES_ROOT/bootstrap/lib/log.sh"
+
+# fzf
+# [bootstrap.repos] clones ~/.fzf but has no post-clone hook, and the clone
+# ships no binary. --bin fetches just that, without touching any rc file —
+# this repo owns the shell integration itself.
+if [[ -x $HOME/.fzf/install ]]; then
+  log_step "fzf binary"
+  "$HOME/.fzf/install" --bin
+else
+  log_warn "$HOME/.fzf/install missing; is the repos phase configured?"
+fi
+
+# tmux
+TPM=$HOME/.tmux/plugins/tpm
+if [[ -x $TPM/bin/install_plugins ]]; then
+  log_step "tmux plugins"
+  # Note: TPM clones itself to ~/.tmux/plugins/tpm (the path tmux.conf's last
+  # line runs) but installs plugins to ~/.config/tmux/plugins, next to the XDG
+  # config. Anything checking for a plugin must look in the latter.
+  "$TPM/bin/install_plugins" || log_warn "TPM install failed; press <prefix>I inside tmux to retry"
+else
+  log_warn "TPM not found at $TPM"
+fi
+
+log_ok "first-run setup complete"

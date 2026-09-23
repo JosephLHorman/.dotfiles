@@ -1,0 +1,7 @@
+# Let shellcheck follow the `source` calls in bootstrap/. The libs are resolved
+# relative to each script, so list every directory layout used there.
+external-sources=true
+source-path=SCRIPTDIR
+source-path=SCRIPTDIR/lib
+source-path=SCRIPTDIR/../lib
+source-path=SCRIPTDIR/bootstrap/lib

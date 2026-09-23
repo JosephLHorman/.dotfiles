@@ -24,13 +24,15 @@ bindkey -v '^?' backward-delete-char # allow backspace past insert-mode entry po
 alias ls="ls --color"
 
 ## Shell Integrations
+# Hand-written rather than managed by [bootstrap.mise_shell_activate] since mise
+# declines to edit a target that is a symlink ("target is a symlink; edit the
+# real file instead"), and ~/.zshrc is symlinked into this repo. Keeping the
+# line here means it is version-controlled and identical on every machine.
+# Must precede the starship init below, because starship is itself a
+# mise-managed tool. Guarded so a missing mise degrades the shell rather than
+# erroring on every prompt.
+command -v mise >/dev/null && eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
-# fnm
-FNM_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "$(fnm env --shell zsh)"
-fi
 # Source fzf's static shell scripts directly instead of `fzf --zsh`, which forks fzf every startup
 [[ -f ~/.fzf/shell/completion.zsh ]] && source ~/.fzf/shell/completion.zsh
 [[ -f ~/.fzf/shell/key-bindings.zsh ]] && source ~/.fzf/shell/key-bindings.zsh

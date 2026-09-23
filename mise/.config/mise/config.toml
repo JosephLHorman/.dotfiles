@@ -1,0 +1,28 @@
+# Global mise config — the declarative tool list for this machine.
+
+# Layer boundary: mise owns developer tools, mise bootstrap/apt owns the 
+# system layer (zsh, tmux, stow, git, build-essential, luarocks, clipboard). 
+# Things that ship shell integration rather than just a binary — fzf, TPM,
+# zinit — are git clones.
+
+[tools]
+# Pinned to the aqua backend intentionally. mise's default for `neovim` is
+# vfox:mise-plugins/vfox-neovim; aqua ships verified prebuilt binaries and
+# resolves per-architecture.
+"aqua:neovim/neovim" = "latest"
+
+ripgrep     = "latest"   # nvim, telescope live-grep
+fd          = "latest"   # telescope, snacks — installed as `fd`, not Debian's `fdfind`
+lazygit     = "latest"   # snacks.lazygit
+# Pinned due to upstream's prebuilt binary being linked
+# against a newer glibc than Debian 12 provides — both 0.25.0 and 0.27.0
+# require GLIBC_2.39 while bookworm ships 2.36 — and the baseline is not
+# monotonic across releases, so "latest" cannot be trusted to run on every
+# supported target. 0.25.4 through 0.25.10 are built against an older baseline
+# and run on Debian 12/13 and Ubuntu 24.04 alike, while still satisfying
+# nvim-treesitter main's requirement of >= 0.25.
+# Before bumping this, run: bootstrap/test/run-matrix.sh debian:12
+tree-sitter = "0.25.10" # nvim-treesitter main branch needs the CLI to build parsers
+starship    = "latest"   # prompt; .zshrc evals this unconditionally
+shellcheck  = "latest"   # lints the provisioning scripts
+uv          = "latest"   # python project management

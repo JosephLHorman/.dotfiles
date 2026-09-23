@@ -1,0 +1,86 @@
+# Machine setup for this dotfiles repo.
+#
+#   ./bootstrap.sh        fresh machine, nothing installed
+#   mise bootstrap        thereafter (re-runnable; converges to this file)
+#   mise bootstrap --dry-run / plan / status
+#
+# Phases listed here for bootstrap are run in order, with tools and 
+# the bootstrap task running last.
+#
+# [tools] is declared in the global config that
+# [dotfiles] links to ~/.config/mise/config.toml, so the toolchain is available
+# everywhere rather than only inside this directory.
+
+[task_config]
+# Any task with the name 'bootstrap' will be called at the end to do additional
+# work.
+includes = ["bootstrap/tasks"]
+
+# dotfiles
+# Using symlink-each to replicate the behavior of `stow`, as both a part
+# of migration and reverse compatability. Paths are unchanged from the stow 
+# layout, so `source` is explicit throughout rather than relying on
+# dotfiles.root inference.
+[dotfiles]
+"~/.zshrc"                   = { source = "zsh/.zshrc" }
+"~/.zshenv"                  = { source = "zsh/.zshenv" }
+"~/.config/starship.toml"    = { source = "starship/.config/starship.toml" }
+"~/.config/mise/config.toml" = { source = "mise/.config/mise/config.toml" }
+"~/.config/nvim"             = { source = "nvim/.config/nvim", mode = "symlink-each" }
+"~/.config/tmux"             = { source = "tmux/.config/tmux", mode = "symlink-each" }
+
+# packages
+# System layer, everything else comes from [tools].
+# mise cannot version-manage, particularly due to unique system intereactions,
+# like a login shell has to be in /etc/shells, tmux wants system libevent and 
+# ncurses, and the rest are build dependencies.
+[bootstrap.packages]
+"apt:zsh" = "latest"
+"apt:tmux" = "latest"
+"apt:git" = "latest"
+"apt:curl" = "latest"
+"apt:unzip" = "latest"
+"apt:ca-certificates" = "latest"
+"apt:build-essential" = "latest"  # telescope-fzf-native's `make`, treesitter parsers
+"apt:make" = "latest"
+"apt:luarocks" = "latest"
+"apt:libreadline-dev" = "latest"  # luarocks wants it
+# Mason builds a venv for basedpyright and Debian splits ensurepip out of the
+# base python3 package.
+"apt:python3-venv" = "latest"
+# tmux.conf handles WSL clipping, rest is routed based on OS. Installing
+# both for X11 and Wayland has no real cost
+"apt:xclip" = "latest"
+"apt:wl-clipboard" = "latest"
+
+# repos
+# Things that ship shell integration rather than just a binary, so mise's tool
+# backends cannot supply them. Repos are further processed/installed in the
+# bootstrap task
+#
+# fzf stays a clone because .zshrc sources ~/.fzf/shell/*.zsh directly to avoid
+# `fzf --zsh` forking fzf on every startup, and .zshenv puts ~/.fzf/bin on PATH.
+# TPM's path is fixed by the last line of tmux.conf.
+[bootstrap.repos]
+"~/.fzf" = { url = "https://github.com/junegunn/fzf.git" }
+"~/.tmux/plugins/tpm" = { url = "https://github.com/tmux-plugins/tpm" }
+
+# user
+# Must be an absolute path, not a command name. /usr/bin/zsh is where the apt
+# package puts it on both Debian and Ubuntu.
+[bootstrap.user]
+login_shell = "/usr/bin/zsh"
+
+# shell activation
+# [bootstrap.mise_shell_activate] is deliberately NOT used. It manages a
+# marker block inside a shell startup file, but mise declines to edit a target
+# that is a symlink — and [dotfiles] symlinks ~/.zshrc into this repo. mise
+# reports "target is a symlink; edit the real file instead".
+#
+# So the activation line is committed in zsh/.zshrc instead, above the starship
+# init. That is also the more predictable arrangement: the line is in version
+# control and identical everywhere, rather than written into the repo through a
+# symlink at bootstrap time.
+#
+# Using it would mean switching .zshrc to mode = "copy", which would break
+# editing the file in this repo and seeing the change immediately.
